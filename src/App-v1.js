@@ -1,14 +1,15 @@
 import { useState } from "react";
 
-// const messages = [
-//   "Learn React ⚛️",
-//   "Apply for jobs 💼",
-//   "Invest your new income 🤑",
-// ];
+const messages = [
+  "Learn React ⚛️",
+  "Apply for jobs 💼",
+  "Invest your new income 🤑",
+];
 
 export default function App() {
   return (
     <>
+      <Steps />
       <Steps />
     </>
   );
@@ -40,43 +41,26 @@ function Steps() {
             <div className={step >= 3 ? "active" : ""}>3</div>
           </div>
 
-          <StepMessage step={step}>{[step - 1]}</StepMessage>
+          <p className="message">
+            Step {step}: {messages[step - 1]}
+          </p>
 
           <div className="buttons">
-            <Button
-              bgColor={"#7950f2"}
-              textColor={"#fff"}
+            <button
+              style={{ backgroundColor: "#7950f2", color: "#fff" }}
               onClick={handlePrevius}
             >
-              👈 Previus
-            </Button>
-            <Button bgColor={"#7950f2"} textColor={"#fff"} onClick={handleNext}>
-              Next 👉
-            </Button>
+              Previus
+            </button>
+            <button
+              style={{ backgroundColor: "#7950f2", color: "#fff" }}
+              onClick={handleNext}
+            >
+              Next
+            </button>
           </div>
         </div>
       )}
     </div>
-  );
-}
-
-function StepMessage({ step, children }) {
-  return (
-    <div>
-      <h1 className="message">
-        Step {step}: {children}
-      </h1>
-    </div>
-  );
-}
-
-function Button({ bgColor, textColor, onClick, children }) {
-  return (
-    <button
-      style={{ backgroundColor: bgColor, color: textColor }}
-      onClick={onClick}
-    >
-      {children}
-    </button>
   );
 }
